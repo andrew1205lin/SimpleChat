@@ -33,12 +33,17 @@ public class ChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageMod
     protected void onBindViewHolder(@NonNull ChatModelViewHolder holder, int position, @NonNull ChatMessageModel model) {
         if(model.getSenderId().equals(FirebaseUtil.currentUserId())){
             holder.leftChatLayout.setVisibility(View.GONE);
+            holder.leftTimeLayout.setVisibility(View.GONE);
             holder.rightChatLayout.setVisibility(View.VISIBLE);
+            holder.rightTimeLayout.setVisibility(View.VISIBLE);
             holder.rightChatTextview.setText(model.getMessage());
+            holder.rightTimeTextview.setText(FirebaseUtil.timestampToString(model.getTimestamp()));
         }else{
             holder.rightChatLayout.setVisibility(View.GONE);
+            holder.rightTimeLayout.setVisibility(View.GONE);
             holder.leftChatLayout.setVisibility(View.VISIBLE);
             holder.leftChatTextview.setText(model.getMessage());
+            holder.leftTimeTextview.setText(FirebaseUtil.timestampToString(model.getTimestamp()));
         }
     }
 
@@ -50,8 +55,8 @@ public class ChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageMod
     }
 
     class ChatModelViewHolder extends RecyclerView.ViewHolder{
-        LinearLayout leftChatLayout,rightChatLayout;
-        TextView leftChatTextview,rightChatTextview;
+        LinearLayout leftChatLayout,rightChatLayout,leftTimeLayout,rightTimeLayout;
+        TextView leftChatTextview,rightChatTextview,leftTimeTextview,rightTimeTextview;
 
         public ChatModelViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +65,11 @@ public class ChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageMod
             rightChatLayout = itemView.findViewById(R.id.right_chat_layout);
             leftChatTextview = itemView.findViewById(R.id.left_chat_textview);
             rightChatTextview = itemView.findViewById(R.id.right_chat_textview);
+
+            leftTimeLayout = itemView.findViewById(R.id.left_time_layout);
+            rightTimeLayout = itemView.findViewById(R.id.right_time_layout);
+            leftTimeTextview = itemView.findViewById(R.id.left_time_textview);
+            rightTimeTextview = itemView.findViewById(R.id.right_time_textview);
         }
     }
 }
