@@ -6,7 +6,8 @@ A simple chat app with firebase.
 ### Chatroom page
 Chat with other user.
 
-![image](https://github.com/andrew1205lin/SimpleChat/assets/61780524/bfc6b64a-c57d-435e-b5a2-057659939384)
+![image](https://github.com/andrew1205lin/SimpleChat/assets/61780524/db3ca528-1de7-4c47-bb6f-134f297dee59)
+
 
 - Mainly handled by ChatActivity.
 - Storing the Chatroom related state variables in Firebase with ChatroomModel.
